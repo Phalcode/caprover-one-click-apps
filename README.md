@@ -6,5 +6,5 @@ Third Party Caprover One-Click-App-Repository for all Phalcode related applicati
 
 - Login to your CapRover dashboard
 - Go to **apps** and click on **One-Click Apps/Databases** and scrolldown to the bottom
-- Under **3rd party repositories:** copy `https://caprover-repo.phalco.de` and paste it in to the text box
+- Under **3rd party repositories:** copy `https://phalcode.github.io/caprover-one-click-apps` and paste it in to the text box
 - Click the **_Connect New Repository_** button
