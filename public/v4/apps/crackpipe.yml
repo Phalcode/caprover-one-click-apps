@@ -1,0 +1,71 @@
+captainVersion: 4
+version: '3.8'
+services:
+    # Crackpipe
+    $$cap_appname:
+        depends_on:
+            - $$cap_appname-db
+        image: phalcode/crackpipe-backend:$$cap_crackpipe_version
+        restart: always
+        environment:
+            DB_HOST: srv-captain--$$cap_appname-db
+            DB_USERNAME: 'crackpipe'
+            DB_PASSWORD: $$cap_crackpipe_database_password
+            RAWG_API_KEY: $$cap_rawg_api_key
+            SERVER_ADMIN_USERNAME: $$cap_admin_username
+        volumes:
+            - $$cap_appname-files:/files
+            - $$cap_appname-images:/images
+        caproverExtra:
+            containerHttpPort: '8080'
+    # Postgres
+    $$cap_appname-db:
+        image: postgres:$$cap_postgres_version
+        restart: always
+        environment:
+            POSTGRES_USER: crackpipe
+            POSTGRES_PASSWORD: $$cap_crackpipe_database_password
+            POSTGRES_DB: crackpipe
+        volumes:
+            - $$cap_appname-db-data:/var/lib/postgresql/data
+        caproverExtra:
+            notExposeAsWebApp: 'true'
+caproverOneClickApp:
+    variables:
+        - id: $$cap_crackpipe_version
+          label: Crackpipe Server Version Tag
+          defaultValue: 'latest'
+          description: Check out the Docker page for the valid tags https://hub.docker.com/r/phalcode/crackpipe-backend/tags
+          validRegex: /^([^\s^\/])+$/
+        - id: $$cap_crackpipe_database_password
+          label: Database Password
+          defaultValue: $$cap_gen_random_hex(14)
+          description: 'Your super secret password for your Crackpipe Database'
+          validRegex: /^([^\s^\/])+$/
+        - id: $$cap_postgres_version
+          label: Postgres Database Version Tag
+          defaultValue: '15-alpine'
+          description: Check out their Docker page for the valid tags https://hub.docker.com/_/postgres/tags
+          validRegex: /^([^\s^\/])+$/
+        - id: $$cap_rawg_api_key
+          label: RAWG API Key
+          defaultValue: ''
+          description: 'Your RAWG API Key. You can leave it empty for now, but it is recommended to obtain one. More Info: https://crackpipe.de/docs/server-docs/indexing-and-metadata#integration-with-rawg'
+          validRegex: /^(?:[a-z0-9]{32})?$/
+        - id: $$cap_admin_username
+          label: Crackpipe Admin Username
+          defaultValue: ''
+          description: 'The Username of the Server Admin you will need to register manually later. More Info: https://crackpipe.de/docs/server-docs/indexing-and-metadata#integration-with-rawg'
+          validRegex: /^([^\s^\/])+$/
+    instructions:
+        start: >-
+            Crackpipe is an open-source, decentralized, selfhosted and liberal alternative to Game Platforms like Steam. It allows you and your friends to play and track games that are on a fileserver.
+            It is recommended to have a read on this setup documentation here before you start: https://crackpipe.de/docs/server-docs/setup
+        end: >-
+            Done! 🥳
+            Your Crackpipe server should be available at http://$$cap_appname.$$cap_root_domain now.
+            Visit https://crackpipe.de/docs/server-docs/setup#what-next to learn how to use it.
+    displayName: Crackpipe
+    isOfficial: true
+    description: Crackpipe is an open-source, decentralized, selfhosted and liberal alternative to traditional Game Platforms. It allows you and your friends to play and track games that are on a fileserver.
+    documentation: More infos & documentation available on https://crackpipe.de
