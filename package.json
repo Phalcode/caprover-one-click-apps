@@ -1,7 +1,7 @@
 {
   "name": "caprover-one-click-apps",
   "version": "1.0.0",
-  "description": "Custom One Click App Repository for CapRover",
+  "description": "Phalcode's One Click App Repository for CapRover",
   "scripts": {
     "formatter": "prettier --check './public/**/*.(json|yml)'",
     "formatter-write": "prettier --write './public/**/*.(json|yml)'",
@@ -11,14 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awesomehubio/caprover-one-click-apps.git"
+    "url": "git+https://github.com/Phalcode/caprover-one-click-apps.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/awesomehubio/caprover-one-click-apps/issues"
-  },
-  "homepage": "https://github.com/awesomehubio/caprover-one-click-apps",
+  "author": "Phalcode",
+  "license": "MIT",
   "dependencies": {
     "fs-extra": "^11.1.1",
     "gh-pages": "^5.0.0",
