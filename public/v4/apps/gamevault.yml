@@ -59,7 +59,7 @@ caproverOneClickApp:
           validRegex: /^([^\s^\/])+$/
     instructions:
         start: >-
-            GameVault is an open-source, decentralized, selfhosted and liberal alternative to Game Platforms like Steam. It allows you and your friends to play and track games that are on a fileserver.
+            GameVault is a source-available self-hosted alternative to traditional Game Platforms. It allows you and your friends to play and track games that are on a fileserver.
             It is recommended to have a read on this setup documentation here before you start: https://gamevau.lt/docs/server-docs/setup
         end: >-
             Done! 🥳
@@ -67,5 +67,5 @@ caproverOneClickApp:
             Visit https://gamevau.lt/docs/server-docs/setup#what-next to learn how to use it.
     displayName: GameVault
     isOfficial: true
-    description: GameVault is an open-source, decentralized, selfhosted and liberal alternative to traditional Game Platforms. It allows you and your friends to play and track games that are on a fileserver.
+    description: GameVault is a source-available self-hosted alternative to traditional Game Platforms. It allows you and your friends to play and track games that are on a fileserver.
     documentation: More infos & documentation available on https://gamevau.lt
