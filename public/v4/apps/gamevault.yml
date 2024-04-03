@@ -12,7 +12,6 @@ services:
             DB_USERNAME: 'gamevault'
             DB_PASSWORD: $$cap_gamevault_database_password
             RAWG_API_KEY: $$cap_rawg_api_key
-            SERVER_ADMIN_USERNAME: $$cap_admin_username
         volumes:
             - $$cap_appname-files:/files
             - $$cap_appname-images:/images
@@ -52,11 +51,6 @@ caproverOneClickApp:
           defaultValue: ''
           description: 'Your RAWG API Key. You can leave it empty for now, but it is recommended to obtain one. More Info: https://gamevau.lt/docs/server-docs/indexing-and-metadata#integration-with-rawg'
           validRegex: /^(?:[a-z0-9]{32})?$/
-        - id: $$cap_admin_username
-          label: GameVault Admin Username
-          defaultValue: ''
-          description: 'The Username of the Server Admin you will need to register manually later. More Info: https://gamevau.lt/docs/server-docs/indexing-and-metadata#integration-with-rawg'
-          validRegex: /^([^\s^\/])+$/
     instructions:
         start: >-
             GameVault is a source-available self-hosted alternative to traditional Game Platforms. It allows you and your friends to play and track games that are on a fileserver.
