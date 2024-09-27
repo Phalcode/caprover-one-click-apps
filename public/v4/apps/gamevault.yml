@@ -11,10 +11,11 @@ services:
             DB_HOST: srv-captain--$$cap_appname-db
             DB_USERNAME: 'gamevault'
             DB_PASSWORD: $$cap_gamevault_database_password
-            RAWG_API_KEY: $$cap_rawg_api_key
+            METADATA_IGDB_CLIENT_ID: $$cap_igdb_client_id
+            METADATA_IGDB_CLIENT_SECRET: $$cap_igdb_client_secret
         volumes:
             - $$cap_appname-files:/files
-            - $$cap_appname-images:/images
+            - $$cap_appname-media:/media
         caproverExtra:
             containerHttpPort: '8080'
     # Postgres
@@ -46,10 +47,15 @@ caproverOneClickApp:
           defaultValue: '15-alpine'
           description: Check out their Docker page for the valid tags https://hub.docker.com/_/postgres/tags
           validRegex: /^([^\s^\/])+$/
-        - id: $$cap_rawg_api_key
-          label: RAWG API Key
+        - id: $$cap_igdb_client_id
+          label: IGDB Client-ID
           defaultValue: ''
-          description: 'Your RAWG API Key. You can leave it empty for now, but it is recommended to obtain one. More Info: https://gamevau.lt/docs/server-docs/indexing-and-metadata#integration-with-rawg'
+          description: 'This is your IGDB Client-ID for retrieving metadata. You can leave it empty for now, but it is recommended to obtain one. More Info: https://gamevau.lt/docs/server-docs/metadata-enrichment/provider-igdb#setup'
+          validRegex: /^(?:[a-z0-9]{32})?$/
+        - id: $$cap_igdb_client_secret
+          label: IGDB Client-Secret
+          defaultValue: ''
+          description: 'This is your IGDB Client-Secret for retrieving metadata. You can leave it empty for now, but it is recommended to obtain one. More Info: https://gamevau.lt/docs/server-docs/metadata-enrichment/provider-igdb#setup'
           validRegex: /^(?:[a-z0-9]{32})?$/
     instructions:
         start: >-
